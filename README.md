@@ -17,6 +17,6 @@ It displays a list of characters that match the text entered in the search box. 
 
 ## About Application
 
-You can download and try the APK and IPA versions of the application from the link below.
+You can download and try the APK of the application from the link below.
 
-[Download](https://www.example.com/ozellik1)
+[Download](https://dosya.co/5xh7iciej8h0/furkan_can_assesment_apk.zip.html)
