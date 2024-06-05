@@ -1,18 +1,19 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { styled } from "nativewind";
 
-// types
-import { RickObject } from "@/types/types";
+import { styled } from "nativewind";
+import { Text, TouchableOpacity, View } from "react-native";
 
 // store
 import useAppStore from "@/store/store";
+
+// types
+import { RickObject } from "@/types/types";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledOpacity = styled(TouchableOpacity);
 
-function SelectCard() {
+export default function SelectCards() {
   const selectedRicks = useAppStore((store) => store.selectedRicks);
 
   return (
@@ -33,17 +34,16 @@ function SelectCardItem({ rick }: Props) {
 
   return (
     <StyledView className="flex-1 w-1/2 max-w-[50%] p-1">
-      <StyledView className="flex-1 flex-row items-center justify-between p-2 bg-[#414b4d] rounded-md">
-        <StyledText className="text-white">{rick.name}</StyledText>
+      <StyledView className="flex-1 flex-row items-center justify-between p-2 bg-card rounded-md">
+        <StyledText className="!text-white flex-1">{rick.name}</StyledText>
+
         <StyledOpacity
-          className="bg-[#0e1011] px-[10px] py-[5px] rounded-md"
+          className="bg-button px-[10px] py-[5px] rounded-md"
           onPress={() => selectRick(rick)}
         >
-          <StyledText className="text-white">X</StyledText>
+          <StyledText className="!text-white">X</StyledText>
         </StyledOpacity>
       </StyledView>
     </StyledView>
   );
 }
-
-export default React.memo(SelectCard);

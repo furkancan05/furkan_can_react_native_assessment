@@ -10,7 +10,8 @@ interface Store {
   selectedRicks: RickObject[];
 
   setSearch: (value: string) => void; // search text
-  setRicks: (ricks: RickObject[]) => void; // all ricks coming from search request
+  setRicks: (ricks: RickObject[]) => void; // all ricks coming from search request (for pagination)
+  addRicks: (ricks: RickObject[]) => void; // all ricks coming from search request (for pagination)
   selectRick: (rick: RickObject) => void; // select or remove a rick
   clearRicks: () => void; // clear all ricks coming from search request
 }
@@ -21,7 +22,8 @@ const useAppStore = create<Store>()((set) => ({
   selectedRicks: [],
 
   setSearch: (value) => set(() => ({ search: value })),
-  setRicks: (ricks) => set((state) => ({ ricks: [...state.ricks, ...ricks] })),
+  setRicks: (ricks) => set((state) => ({ ricks: [...ricks] })),
+  addRicks: (ricks) => set((state) => ({ ricks: [...state.ricks, ...ricks] })),
   selectRick: (rick) =>
     set(
       produce((state) => {

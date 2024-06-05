@@ -24,6 +24,7 @@ function TabLayout() {
   const search = useAppStore((store) => store.search);
   const ricks = useAppStore((store) => store.ricks);
   const setRicks = useAppStore((store) => store.setRicks);
+  const addRicks = useAppStore((store) => store.addRicks);
   const clearRicks = useAppStore((store) => store.clearRicks);
 
   const [loading, setLoading] = React.useState(false);
@@ -34,12 +35,15 @@ function TabLayout() {
 
   const debounce = useDebounce(search, 1000);
 
+  React.useEffect(() => {
+    if (search) return;
+
+    clearRicks();
+  }, [search]);
+
   // fetch ricks on change search text (with debounce)
   const getSearchedRicks = async () => {
-    if (!search) {
-      clearRicks();
-      return;
-    }
+    if (!search) return;
 
     setLoading(true);
 
@@ -74,7 +78,7 @@ function TabLayout() {
       return;
     }
 
-    setRicks((response as RicksResponse).results);
+    addRicks((response as RicksResponse).results);
     setContinuation((response as RicksResponse).info.next);
 
     setLoading(false);

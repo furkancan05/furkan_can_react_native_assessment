@@ -1,10 +1,10 @@
 import React from "react";
 
 import { styled } from "nativewind";
-import { ActivityIndicator, FlatList, TextInput, View } from "react-native";
+import { ActivityIndicator, TextInput, View } from "react-native";
 
 // components
-import SelectCard from "@/components/SelectCard";
+import SelectCards from "@/components/SelectCards";
 
 // store
 import useAppStore from "@/store/store";
@@ -24,10 +24,11 @@ export default function Input({ loading, setError }: Props) {
 
   return (
     <StyledView className="relative border-solid border-[1px] border-white/30 focus:border-white/80 mt-10 rounded-lg transition-colors p-2">
-      <SelectCard />
+      <SelectCards />
 
       <StyledInput
         placeholder="John Doe Rick"
+        placeholderTextColor="#ffffff80"
         className="w-full h-[50px] text-lg text-white/80"
         defaultValue={search}
         onChangeText={(text) => {
